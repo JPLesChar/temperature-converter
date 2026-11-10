@@ -2,21 +2,23 @@
 <html>
 
 <head>
-    <title>temperature converter</title>
+    <title>Temperature Converter</title>
 </head>
 
 <body>
 
     <h1>Temperature Converter</h1>
 
-    <form>
+    <form method="POST">
         <label>Fahrenheit:</label>
-        <input type="number" name="farenheit">
+        <input type="number" name="fahrenheit" required>
 
         <button type="submit">Convert</button>
     </form>
 
-    <p>Result will appear here</p>
+    {% if result is not none %}
+    <p>Celsius: {{ result }}</p>
+    {% endif %}
 
 </body>
 

@@ -1,6 +1,15 @@
-fahrenheit = float(input("Enter Fahrenheit: "))
+from flask import Flask, render_template, request
 
-celsius = (fahrenheit - 32) * 5 / 9
+app = Flask(__name__)
 
-print("Celsius:", round(celsius, 2))
+@app.route("/", methods=["GET", "POST"])
+def home():
+    result = None
 
+    if request.method == "POST":
+        fahrenheit = float(request.form["fahrenheit"])
+        result = (fahrenheit - 32) * 5 / 9
+
+    return render_template("index.html", result=result)
+
+app.run(debug=True)
